@@ -1,12 +1,13 @@
 import pandas as pd
 import xlwings as xw
 import time
+
+#Pick up SKU and Sales Org information
 sorg = pd.read_csv(r"C:\Users\liewkmbr\Python_Projects\SORG_ZZ.csv")
 sorglist = list(sorg["Material No"])
 dclist = list(sorg["Sales Org"])
 
-
-
+#Make the cartesion product
 indx = pd.MultiIndex.from_product([sorglist,dclist], names = ["sorglist","dclist"])
 indx1 = indx.dropna()
 #print(indx1)  
@@ -24,13 +25,3 @@ sorgzzclean = sorgzz.dropna()
 sorgzzclean.to_csv(r"C:\Users\liewkmbr\Python_Projects\sorg.csv",index = False)
 
 
-#time.sleep(30)
-
-#sorgzz = pd.read_excel(r"C:\Users\liewkmbr\Python_Projects\sorg.xlsx")
-#print (sorgzz)
-
-#index2 = index1.reset_index(inplace=True)
-#options(dropna=True).
-#sorg_update = index1.to_csv(r"C:\Users\liewkmbr\Downloads\sorg_update.csv")
-
-#print(index1)    
